@@ -26,7 +26,7 @@ public class Serie {
     private String sinopse;
 
     // Uma série para vários episódios
-    // fetch eager traz as entidades mesmo não pedidas, diferente do lazily que é o padrão
+    // fetch eager traz as entidades mesmo não pedidas, diferente do lazily
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios = new ArrayList<>();
 
