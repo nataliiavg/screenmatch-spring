@@ -25,7 +25,8 @@ public class Serie {
     private String poster;
     private String sinopse;
 
-    @Transient
+    // Uma série para vários episódios
+    @OneToMany(mappedBy = "serie")
     private List<Episodio> episodios = new ArrayList<>();
 
     public Serie() {} // A JPA exige esse construtor padrão
