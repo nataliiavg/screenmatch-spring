@@ -56,6 +56,7 @@ public class Principal {
                     break;
                 case 0:
                     System.out.println("Saindo...");
+                    break;
                 default:
                     System.out.println("Opção Inválida.");
             }
@@ -91,10 +92,7 @@ public class Principal {
     }
 
     private void listarSeriesBuscadas(){
-        List<Serie> series = new ArrayList<>();
-        series = dadosSeries.stream()
-                        .map(d -> new Serie(d))
-                                .collect(Collectors.toList());
+        List<Serie> series = repositorio.findAll(); // busca o que está cadastrado no repositório
         series.stream()
                 .sorted(Comparator.comparing(Serie::getGenero))
                 .forEach(System.out::println);
