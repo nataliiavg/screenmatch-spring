@@ -26,7 +26,8 @@ public class Serie {
     private String sinopse;
 
     // Uma série para vários episódios
-    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
+    // fetch eager traz as entidades mesmo não pedidas, diferente do lazily que é o padrão
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios = new ArrayList<>();
 
     public Serie() {} // A JPA exige esse construtor padrão
@@ -50,7 +51,9 @@ public class Serie {
         return episodios;
     }
 
+
     public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this)); // manipula a chave estrangeira
         this.episodios = episodios;
     }
 
@@ -123,6 +126,7 @@ public class Serie {
                 ", avaliacao=" + avaliacao +
                 ", atores='" + atores + '\'' +
                 ", poster='" + poster + '\'' +
-                ", sinopse='" + sinopse + '\'';
+                ", sinopse='" + sinopse + '\'' +
+                ", episodios='" + episodios + '\'';
     }
 }
