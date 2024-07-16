@@ -179,7 +179,7 @@ public class Principal {
         System.out.println("Com a avaliação a partir de qual valor? ");
         var avaliacao = leitura.nextDouble();
         leitura.nextLine();
-        List<Serie> seriesPorTemporadaEAvaliacao = repositorio.seriesPorTemporadaEAvaliacao();
+        List<Serie> seriesPorTemporadaEAvaliacao = repositorio.seriesPorTemporadaEAvaliacao(totalTemporadas, avaliacao);
         System.out.println(" ======= Séries Filtradas ======= ");
         seriesPorTemporadaEAvaliacao.forEach(s ->
                 System.out.println(s.getTitulo() + " - avaliação: " + s.getAvaliacao()));

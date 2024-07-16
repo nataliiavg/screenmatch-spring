@@ -17,10 +17,10 @@ public interface SerieRepository extends JpaRepository<Serie, Long> {
 
     List<Serie> findByGenero(Categoria categoria);
 
-    List<Serie> findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(int totalTemporadas, double avaliacao);
+//    List<Serie> findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(int totalTemporadas, double avaliacao);
 
 
-    // JPQL
-    @Query(value = "select * from series where series.total_temporadas <= 5 and series.avaliacao >= 7.5", nativeQuery = true)
-    List<Serie> seriesPorTemporadaEAvaliacao();
+    // JPQL = Java Persistence Query Language
+    @Query("select s from Serie s WHERE s.totalTemporadas <= :totalTemporadas AND s.avaliacao >= :avaliacao")
+    List<Serie> seriesPorTemporadaEAvaliacao(int totalTemporadas, double avaliacao);
 }
