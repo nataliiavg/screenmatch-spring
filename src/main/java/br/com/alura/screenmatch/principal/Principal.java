@@ -173,14 +173,14 @@ public class Principal {
     }
 
     public void buscarSeriesPorTemporadaEAvaliacao(){
-        System.out.println("Buscar séries com no máximo quantas temporadas? ");
+        System.out.println("Filtrar séries com no máximo quantas temporadas? ");
         var totalTemporadas = leitura.nextInt();
         leitura.nextLine();
         System.out.println("Com a avaliação a partir de qual valor? ");
         var avaliacao = leitura.nextDouble();
         leitura.nextLine();
-        List<Serie> seriesPorTemporadaEAvaliacao = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(totalTemporadas, avaliacao);
-        System.out.println(" ======= Séries Buscadas ======= ");
+        List<Serie> seriesPorTemporadaEAvaliacao = repositorio.seriesPorTemporadaEAvaliacao();
+        System.out.println(" ======= Séries Filtradas ======= ");
         seriesPorTemporadaEAvaliacao.forEach(s ->
                 System.out.println(s.getTitulo() + " - avaliação: " + s.getAvaliacao()));
     }
